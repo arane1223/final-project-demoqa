@@ -1,0 +1,88 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
+    id "io.freefair.lombok" version "8.6"
+}
+
+repositories {
+    mavenCentral()
+}
+
+def restAssuredVersion = "5.5.2"
+def selenideVersion = "7.3.2"
+def junitVersion = "5.10.0"
+def slf4jVersion = "2.0.7"
+def allureVersion = "2.21.0"
+def ownerVersion = "1.0.12"
+def javafakerVersion = "1.0.2"
+def assertjVersion = "3.22.0"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation "com.codeborne:selenide:$selenideVersion"
+    testImplementation "io.qameta.allure:allure-selenide:$allureVersion"
+    testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
+    testImplementation "io.rest-assured:json-schema-validator:$restAssuredVersion"
+    testImplementation "org.aeonbits.owner:owner:$ownerVersion"
+    testImplementation "org.assertj:assertj-core:$assertjVersion"
+    testImplementation "io.qameta.allure:allure-rest-assured:$allureVersion"
+    testImplementation "com.github.javafaker:javafaker:$javafakerVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+    testImplementation "org.slf4j:slf4j-simple:$slf4jVersion"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+def testTags = [
+        'all',
+        'api',
+        'ui',
+        'uiapi',
+        'account',
+        'bookstore',
+        'registration',
+        'box'
+]
+
+testTags.each { tagName ->
+    tasks.register("${tagName}_test", Test) {
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        useJUnitPlatform {
+            includeTags(tagName)
+        }
+        testLogging {
+            lifecycle {
+                events "started", "skipped", "failed", "standard_error", "standard_out"
+                exceptionFormat "short"
+            }
+        }
+        systemProperties(System.getProperties())
+    }
+}
