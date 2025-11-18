@@ -37,6 +37,7 @@ public class TextBoxTests extends TestBase {
                         .setUserName(data.firstName)
                         .setUserEmail(data.userEmail)
                         .setAllAddresses(data.address, data.secondAddress)
+                        .scrollToSubmit()
                         .clickOnSubmit());
 
         step("Проверить, что вывелись такие же данные, которые были введены", () ->
@@ -70,6 +71,7 @@ public class TextBoxTests extends TestBase {
                         .setUserName(userName)
                         .setUserEmail(userEmail)
                         .setAllAddresses(addresses)
+                        .scrollToSubmit()
                         .clickOnSubmit());
 
         step("Проверить, что появилось поле с такими же: именем, почтой, адресами", () ->

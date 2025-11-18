@@ -59,4 +59,10 @@ public class TextBoxPage {
         submitInput.click();
         return this;
     }
+
+    @Step("Проскролить до кнопки «Submit»")
+    public TextBoxPage scrollToSubmit(){
+        submitInput.scrollTo();
+        return this;
+    }
 }
