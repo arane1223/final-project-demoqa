@@ -39,6 +39,7 @@ public class RegistrationFormTests extends TestBase {
                         .setPicture(data.picture)
                         .setAddress(data.address)
                         .setStateAndCity(data.state, data.city)
+                        .scrollToSubmit()
                         .clickOnSubmit());
 
         step("Проверить, что появился popup с введенными значениями во всех полях", () ->
@@ -71,6 +72,7 @@ public class RegistrationFormTests extends TestBase {
                         .setLastName(data.lastName)
                         .setGender(data.gender)
                         .setUserNumber(data.userNumber)
+                        .scrollToSubmit()
                         .clickOnSubmit());
 
         step("Проверить, что появился popup с введенными значениями во всех полях", () ->

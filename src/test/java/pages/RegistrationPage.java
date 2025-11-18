@@ -126,4 +126,10 @@ public class RegistrationPage {
         submitInput.click();
         return this;
     }
+
+    @Step("Проскроллить до кнопки «Submit»")
+    public RegistrationPage scrollToSubmit() {
+        submitInput.scrollTo();
+        return this;
+    }
 }
