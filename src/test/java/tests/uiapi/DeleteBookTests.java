@@ -2,10 +2,7 @@ package tests.uiapi;
 
 import helpers.auth.AuthContext;
 import helpers.auth.WithLogin;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Link;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import models.AddListOfBooksModel;
 import models.StringObjectModel;
 import org.junit.jupiter.api.DisplayName;
@@ -28,6 +25,7 @@ import static specs.BookStoreSpecs.baseRespSpec;
 public class DeleteBookTests extends TestBase {
 
     @Test
+    @AllureId("41301")
     @WithLogin
     @Story("Удаление через API запрос")
     @DisplayName("Успешное удаление товара из списка через API запрос")
@@ -60,6 +58,7 @@ public class DeleteBookTests extends TestBase {
     }
 
     @Test
+    @AllureId("41302")
     @WithLogin
     @Story("Удаление через UI интерфейс")
     @DisplayName("Успешное удаление товара из списка через UI взаимодействие")

@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
@@ -32,6 +33,7 @@ import static specs.BookStoreSpecs.baseRespSpec;
 public class BookStoreTests extends TestBase {
 
     @Test
+    @AllureId("41294")
     @Story("Проверка по названию")
     @DisplayName("Проверка библиотеки книг по названиям")
     void checkingBookListWithGroovyTest() {
@@ -49,6 +51,7 @@ public class BookStoreTests extends TestBase {
     }
 
     @Test
+    @AllureId("41295")
     @Story("Проверка данных книги")
     @DisplayName("Проверка характеристик книги по ISBN")
     void checkingBookCharacteristicsByIsbnWithGroovyTest() {
@@ -71,6 +74,7 @@ public class BookStoreTests extends TestBase {
     }
 
     @Test
+    @AllureId("41293")
     @Story("Если книги нет в базе")
     @DisplayName("Проверка отсутствия книги по ISBN")
     void checkingBookNotFoundByIsbnTest() {

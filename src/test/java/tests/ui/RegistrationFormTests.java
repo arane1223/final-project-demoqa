@@ -18,6 +18,7 @@ import static io.qameta.allure.Allure.step;
 public class RegistrationFormTests extends TestBase {
 
     @Test
+    @AllureId("41298")
     @Story("Заполнение всех полей")
     @DisplayName("При заполнении всех полей Practice Form выйдет popup со значениями всех заполненных полей")
     void fullFillFormTest() {
@@ -58,6 +59,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @AllureId("41297")
     @Story("Заполнение обязательных полей")
     @DisplayName("При заполнении обязательных полей Practice Form выйдет popup заполненными обязательными полями")
     void minimalFillFormTest() {
@@ -84,6 +86,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @AllureId("41296")
     @Story("Отправка пустой формы")
     @DisplayName("При нажатии на кнопку Submit с пустыми полями, popup не появится")
     void negativeFillFormTest() {

@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
@@ -25,6 +26,7 @@ import static specs.BookStoreSpecs.baseRespSpec;
 public class AccountTests extends TestBase {
 
     @Test
+    @AllureId("41291")
     @Story("Авторизация")
     @DisplayName("Успешная авторизация через API")
     void successfulLoginWithTokenTest() {
@@ -45,6 +47,7 @@ public class AccountTests extends TestBase {
     }
 
     @Test
+    @AllureId("41287")
     @Story("Авторизация")
     @DisplayName("Неуспешная авторизация с рандомными данными через API")
     void unsuccessfulLoginWithTokenTest() {
@@ -64,6 +67,7 @@ public class AccountTests extends TestBase {
     }
 
     @Test
+    @AllureId("41290")
     @Story("Получение токена")
     @DisplayName("Успешное получение токена через API")
     void successfulGenerateTokenTest() {
@@ -84,6 +88,7 @@ public class AccountTests extends TestBase {
     }
 
     @Test
+    @AllureId("41288")
     @Story("Получение токена")
     @DisplayName("Неуспешное получение токена через API")
     void unsuccessfulGenerateTokenTest() {
@@ -104,6 +109,7 @@ public class AccountTests extends TestBase {
     }
 
     @Test
+    @AllureId("41292")
     @Story("Повторная регистрация")
     @DisplayName("Неуспешная повторная регистрация уже зарегистрированного пользователя")
     void userReRegistrationTest() {
@@ -123,6 +129,7 @@ public class AccountTests extends TestBase {
     }
 
     @Test
+    @AllureId("41289")
     @Story("Добавление и удаление пользователя")
     @DisplayName("Успешное добавление и удаление нового пользователя")
     void addAndDeleteUserTest() {

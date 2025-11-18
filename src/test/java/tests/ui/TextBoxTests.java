@@ -24,6 +24,7 @@ import static io.qameta.allure.Allure.step;
 public class TextBoxTests extends TestBase {
 
     @Test
+    @AllureId("41300")
     @Story("Заполнение всех полей с помощью библиотеки Faker")
     @DisplayName("Успешное заполнении формы Text Box с генерацией данных через Faker")
     void successfulFillingFormWithFakerTest() {
@@ -58,6 +59,7 @@ public class TextBoxTests extends TestBase {
     }
 
     @MethodSource
+    @AllureId("41299")
     @ParameterizedTest(name = "Заполнение формы с именем {0}, почтой {1}, адресами {2}")
     @Story("Заполнение всех полей с помощью @MethodSource")
     @DisplayName("Заполнение формы Text Box с получением данных с помощью @MethodSource")
