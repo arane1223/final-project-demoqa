@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 import static io.qameta.allure.Allure.step;
 
-@Tags({@Tag("ui"), @Tag("box")})
+@Tags({@Tag("all"), @Tag("ui"), @Tag("box")})
 @Owner("sergeyglukhov")
 @Link(value = "TextBox", url = "https://demoqa.com/text-box")
 @Feature("Заполнение Text Box")

@@ -10,7 +10,7 @@ import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
 
-@Tags({@Tag("ui"), @Tag("registration")})
+@Tags({@Tag("all"), @Tag("ui"), @Tag("registration")})
 @Owner("sergeyglukhov")
 @Link(value = "PracticeForm", url = "https://demoqa.com/automation-practice-form")
 @Feature("Заполнение Practice Form")

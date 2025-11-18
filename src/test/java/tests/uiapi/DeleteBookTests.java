@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 import static specs.BookStoreSpecs.baseReqSpec;
 import static specs.BookStoreSpecs.baseRespSpec;
 
-@Tags({@Tag("uiapi"), @Tag("account"), @Tag("bookstore")})
+@Tags({@Tag("all"), @Tag("uiapi"), @Tag("account"), @Tag("bookstore")})
 @Owner("sergeyglukhov")
 @Link(value = "Profile", url = "https://demoqa.com/profile")
 @Feature("Удаление книг из профиля")

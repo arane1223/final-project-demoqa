@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static specs.BookStoreSpecs.baseReqSpec;
 import static specs.BookStoreSpecs.baseRespSpec;
 
-@Tags({@Tag("api"), @Tag("account")})
+@Tags({@Tag("all"), @Tag("api"), @Tag("account")})
 @Owner("sergeyglukhov")
 @Feature("Работа с данными пользователей через API")
 @DisplayName("API тесты c данными пользователей на demoqa")

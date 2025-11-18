@@ -60,6 +60,7 @@ tasks.withType(Test) {
 }
 
 def testTags = [
+        'all',
         'api',
         'ui',
         'uiapi',
