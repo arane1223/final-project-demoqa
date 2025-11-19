@@ -139,7 +139,7 @@ ${TASK}_test
 </p>
 
 ## :point_up_2: Видео примеры прохождения тестов
-> К каждому тесту в отчете прилагается видео. Одно из таких видео представлено ниже.
+> К каждому тесту в отчете прилагается видео. Пара таких видео представлено ниже.
 <p>
   <img title="Selenoid Video" src="images/gif/selenoid1.gif">
   <img title="Selenoid Video" src="images/gif/selenoid2.gif">
