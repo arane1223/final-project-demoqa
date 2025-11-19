@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class TextBoxResultsComponent {
-    protected SelenideElement
+    private SelenideElement
             nameCheck = $("#output #name"),
             emailCheck = $("#output #email"),
             currentAddressCheck = $("#output #currentAddress"),
