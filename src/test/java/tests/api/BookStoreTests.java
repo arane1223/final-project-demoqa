@@ -20,11 +20,9 @@ import static data.TestData.GIT_BOOK_PUBLISHER;
 import static data.TestData.GIT_BOOK_PUBLISH_DATE;
 import static data.TestData.GIT_BOOK_SUB_TITLE;
 import static data.TestData.incorrectRandomIsbn;
+import static helpers.TestApiHelpers.executeGet;
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static specs.BookStoreSpecs.baseReqSpec;
-import static specs.BookStoreSpecs.baseRespSpec;
 
 @Tags({@Tag("all"), @Tag("api"), @Tag("bookstore")})
 @Owner("sergeyglukhov")
@@ -38,10 +36,7 @@ public class BookStoreTests extends TestBase {
     @DisplayName("Проверка библиотеки книг по названиям")
     void checkingBookListWithGroovyTest() {
         Response response = step("Отправить запрос на получение списка книг", () ->
-                given(baseReqSpec)
-                        .get("/BookStore/v1/Books")
-                        .then()
-                        .spec(baseRespSpec(200))
+                executeGet("/BookStore/v1/Books", 200)
                         .extract().response());
 
         step("Проверить ответ, сравнить полученный список книг с заданным списком", () -> {
@@ -56,11 +51,7 @@ public class BookStoreTests extends TestBase {
     @DisplayName("Проверка характеристик книги по ISBN")
     void checkingBookCharacteristicsByIsbnWithGroovyTest() {
         Response response = step("Отправить запрос на получение книги «Git Pocket Guide»", () ->
-                given(baseReqSpec)
-                        .queryParam("ISBN", GIT_BOOK_ISBN)
-                        .get("/BookStore/v1/Book")
-                        .then()
-                        .spec(baseRespSpec(200))
+                executeGet("/BookStore/v1/Book", "ISBN", GIT_BOOK_ISBN, 200)
                         .extract().response());
 
         step("Проверить характеристики книги", () -> {
@@ -79,11 +70,7 @@ public class BookStoreTests extends TestBase {
     @DisplayName("Проверка отсутствия книги по ISBN")
     void checkingBookNotFoundByIsbnTest() {
         Response response = step("Отправить запрос на получение книги", () ->
-                given(baseReqSpec)
-                        .queryParam("ISBN", incorrectRandomIsbn)
-                        .get("/BookStore/v1/Book")
-                        .then()
-                        .spec(baseRespSpec(400))
+                executeGet("/BookStore/v1/Book", "ISBN", incorrectRandomIsbn, 400)
                         .extract().response());
 
         step("Проверить ответ", () -> {
