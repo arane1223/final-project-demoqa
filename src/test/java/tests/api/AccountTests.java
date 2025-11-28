@@ -13,11 +13,10 @@ import org.junit.jupiter.api.*;
 import tests.TestBase;
 
 import static data.TestData.*;
+import static helpers.TestApiHelpers.executeDelete;
+import static helpers.TestApiHelpers.executePost;
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static specs.BookStoreSpecs.baseReqSpec;
-import static specs.BookStoreSpecs.baseRespSpec;
 
 @Tags({@Tag("all"), @Tag("api"), @Tag("account")})
 @Owner("sergeyglukhov")
@@ -31,12 +30,7 @@ public class AccountTests extends TestBase {
     @DisplayName("Успешная авторизация через API")
     void successfulLoginWithTokenTest() {
         Response response = step("Отправить запрос на авторизацию", () ->
-                given(baseReqSpec)
-                        .body(AUTH_DATA)
-                        .when()
-                        .post("/Account/v1/Authorized")
-                        .then()
-                        .spec(baseRespSpec(200))
+                executePost("/Account/v1/Authorized", AUTH_DATA, 200)
                         .extract().response());
 
         step("Проверить ответ", () -> {
@@ -52,12 +46,7 @@ public class AccountTests extends TestBase {
     @DisplayName("Неуспешная авторизация с рандомными данными через API")
     void unsuccessfulLoginWithTokenTest() {
         Response response = step("Отправить запрос на авторизацию", () ->
-                given(baseReqSpec)
-                        .body(randomAuthData())
-                        .when()
-                        .post("/Account/v1/Authorized")
-                        .then()
-                        .spec(baseRespSpec(404))
+                executePost("/Account/v1/Authorized", randomAuthData(), 404)
                         .extract().response());
 
         step("Проверить ответ", () -> {
@@ -72,12 +61,7 @@ public class AccountTests extends TestBase {
     @DisplayName("Успешное получение токена через API")
     void successfulGenerateTokenTest() {
         Response response = step("Отправить запрос на получение токена", () ->
-                given(baseReqSpec)
-                        .body(AUTH_DATA)
-                        .when()
-                        .post("/Account/v1/GenerateToken")
-                        .then()
-                        .spec(baseRespSpec(200))
+                executePost("/Account/v1/GenerateToken", AUTH_DATA, 200)
                         .extract().response());
 
         step("Проверить ответ", () -> {
@@ -93,12 +77,7 @@ public class AccountTests extends TestBase {
     @DisplayName("Неуспешное получение токена через API")
     void unsuccessfulGenerateTokenTest() {
         Response response = step("Отправить запрос на получение токена", () ->
-                given(baseReqSpec)
-                        .body(randomAuthData())
-                        .when()
-                        .post("/Account/v1/GenerateToken")
-                        .then()
-                        .spec(baseRespSpec(200))
+                executePost("/Account/v1/GenerateToken", randomAuthData(), 200)
                         .extract().response());
 
         step("Проверить ответ", () -> {
@@ -114,12 +93,7 @@ public class AccountTests extends TestBase {
     @DisplayName("Неуспешная повторная регистрация уже зарегистрированного пользователя")
     void userReRegistrationTest() {
         Response response = step("Отправить запрос на регистрацию", () ->
-                given(baseReqSpec)
-                        .body(AUTH_DATA)
-                        .when()
-                        .post("/Account/v1/User")
-                        .then()
-                        .spec(baseRespSpec(406))
+                executePost("/Account/v1/User", AUTH_DATA, 406)
                         .extract().response());
 
         step("Проверить ответ", () -> {
@@ -136,24 +110,14 @@ public class AccountTests extends TestBase {
         LoginViewModel randomAuthDataForThisTest = randomAuthData();
 
         CreateUserResultModel regResponse = step("Отправить запрос на регистрацию нового пользователя", () ->
-                given(baseReqSpec)
-                        .body(randomAuthDataForThisTest)
-                        .when()
-                        .post("/Account/v1/User")
-                        .then()
-                        .spec(baseRespSpec(201))
+                executePost("/Account/v1/User", randomAuthDataForThisTest, 201)
                         .extract().as(CreateUserResultModel.class));
 
         step("Проверить регистрацию нового пользователя", () ->
                 assertThat(regResponse.getUsername()).isEqualTo(randomAuthDataForThisTest.getUserName()));
 
         TokenViewModel genTokenResponse = step("Отправить запрос на авторизацию", () ->
-                given(baseReqSpec)
-                        .body(randomAuthDataForThisTest)
-                        .when()
-                        .post("/Account/v1/GenerateToken")
-                        .then()
-                        .spec(baseRespSpec(200))
+                executePost("/Account/v1/GenerateToken", randomAuthDataForThisTest, 200)
                         .extract().as(TokenViewModel.class));
 
         step("Проверить ответ на авторизацию", () -> {
@@ -162,22 +126,13 @@ public class AccountTests extends TestBase {
         });
 
         step("Отправить запрос на удаление", () ->
-                given(baseReqSpec)
-                        .header("Authorization", "Bearer " + genTokenResponse.getToken())
-                        .when()
-                        .delete("/Account/v1/User/" + regResponse.getUserID())
-                        .then()
-                        .spec(baseRespSpec(204)));
+                executeDelete(
+                        "/Account/v1/User/{id}", regResponse.getUserID(),
+                        genTokenResponse.getToken(), 204));
 
         MessageModel finalResponse = step("Отправить запрос на авторизацию удаленного пользователя", () ->
-                given(baseReqSpec)
-                        .body(randomAuthDataForThisTest)
-                        .when()
-                        .post("/Account/v1/Authorized")
-                        .then()
-                        .spec(baseRespSpec(404))
-                        .extract()
-                        .as(MessageModel.class));
+                executePost("/Account/v1/Authorized", randomAuthDataForThisTest, 404)
+                        .extract().as(MessageModel.class));
 
         step("Проверить ответ, что пользователь не найден", () -> {
             assertThat(finalResponse.getCode()).isEqualTo("1207");

@@ -12,10 +12,8 @@ import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
 import static data.TestData.*;
+import static helpers.TestApiHelpers.*;
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
-import static specs.BookStoreSpecs.baseReqSpec;
-import static specs.BookStoreSpecs.baseRespSpec;
 
 @Tags({@Tag("all"), @Tag("uiapi"), @Tag("account"), @Tag("bookstore")})
 @Owner("sergeyglukhov")
@@ -35,22 +33,12 @@ public class DeleteBookTests extends TestBase {
                 userId = AuthContext.getUserId();
 
         step("Отправить запрос на добавление книги", () ->
-                given(baseReqSpec)
-                        .header("Authorization", "Bearer " + token)
-                        .body(new AddListOfBooksModel(userId, BOOK_LIST))
-                        .when()
-                        .post("/BookStore/v1/Books")
-                        .then()
-                        .spec(baseRespSpec(201)));
+                executePost("/BookStore/v1/Books", token,
+                        new AddListOfBooksModel(userId, BOOK_LIST), 201));
 
         step("Отправить запрос на удаление книги", () ->
-                given(baseReqSpec)
-                        .header("Authorization", "Bearer " + token)
-                        .body(new StringObjectModel(GIT_BOOK_ISBN, userId))
-                        .when()
-                        .delete("/BookStore/v1/Book")
-                        .then()
-                        .spec(baseRespSpec(204)));
+                executeDelete("/BookStore/v1/Book", token,
+                        new StringObjectModel(GIT_BOOK_ISBN, userId), 204));
 
         profilePage
                 .openProfilePage()
@@ -68,13 +56,8 @@ public class DeleteBookTests extends TestBase {
                 userId = AuthContext.getUserId();
 
         step("Отправить запрос на добавление книги через API", () ->
-                given(baseReqSpec)
-                        .header("Authorization", "Bearer " + token)
-                        .body(new AddListOfBooksModel(userId, BOOK_LIST))
-                        .when()
-                        .post("/BookStore/v1/Books")
-                        .then()
-                        .spec(baseRespSpec(201)));
+                executePost("/BookStore/v1/Books", token,
+                        new AddListOfBooksModel(userId, BOOK_LIST), 201));
 
         profilePage
                 .openProfilePage()
