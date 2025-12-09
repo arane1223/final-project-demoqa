@@ -62,8 +62,7 @@
 - Успешное удаление товара из списка через API запрос
 - Успешное удаление товара из списка через UI взаимодействие
 
-## 📋 Сборка в Jenkins
-[**Сборка в Jenkins**](https://jenkins.autotests.cloud/job/final-project-demoqa/)
+## 📋 Сборка в [Jenkins](https://jenkins.autotests.cloud/job/final-project-demoqa/)
 <p>
 <img title="Jenkins Dashboard" src="images/screenshots/jenkins-project.png">
 </p>
@@ -92,11 +91,11 @@ ${TASK}_test
 -Dbrowser=${BROWSER}
 -DbrowserVersion=${BROWSER_VERSION}
 -DbrowserSize=${BROWSER_SIZE}
+-DwebDriverHost=${WEB_DRIVER_HOST}
+-DremoteUrl=https://${AUTH}@${WEB_DRIVER_HOST}/wd/hub
 ```
 
-## 📑 Allure отчет
-
-[Allure отчет в Jenkins](https://jenkins.autotests.cloud/job/final-project-demoqa/allure/)
+## 📑 [Allure отчет](https://jenkins.autotests.cloud/job/final-project-demoqa/allure/)
 
 - ### Главный экран отчета
 <p>
@@ -108,9 +107,7 @@ ${TASK}_test
 <img title="Allure report suites" src="images/screenshots/allure-report-suites.png">
 </p>
 
-## 📑 Интеграция с Allure TestOps
-
-[Проект в Allure TestOps](https://allure.autotests.cloud/project/5009/dashboards)
+## 📑 Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/5009/dashboards)
 
 - ### Экран с результатами запуска тестов
 <p>
@@ -122,9 +119,7 @@ ${TASK}_test
 <img title="Allure test cases" src="images/screenshots/allure-test-ops-tests.png">
 </p>
 
-## 📑 Интеграция с Jira
-
-[Задача в Jira](https://jira.autotests.cloud/browse/HOMEWORK-1539)
+## 📑 Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-1539)
 
 - ### Страница с задачей в Jira (описание, тест-кейсы, запуски)
 <p>
