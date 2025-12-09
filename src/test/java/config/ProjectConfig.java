@@ -24,8 +24,9 @@ public class ProjectConfig {
         Configuration.browserSize = System.getProperty("browserSize", webConfig.browserSize());
         Configuration.pageLoadStrategy = webConfig.pageLoadStrategy();
 
-        if (webConfig.isRemote()) {
-            Configuration.remote = webConfig.remoteUrl();
+        String remoteUrl = webConfig.remoteUrl();
+        if (remoteUrl != null && !remoteUrl.isEmpty()) {
+            Configuration.remote = remoteUrl;
             Configuration.browserCapabilities = new MutableCapabilities();
             Configuration.browserCapabilities.setCapability("selenoid:options",
                     Map.<String, Object>of(
@@ -35,4 +36,5 @@ public class ProjectConfig {
             );
         }
     }
+
 }
