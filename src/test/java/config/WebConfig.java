@@ -3,8 +3,10 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:${env}.properties",
         "classpath:local.properties",
+        "classpath:remote.properties",
+        "system:properties",
+        "system:env"
 })
 public interface WebConfig extends Config {
 
@@ -20,10 +22,8 @@ public interface WebConfig extends Config {
     @Key("baseUrl")
     String baseUrl();
 
-    @Key("isRemote")
-    boolean isRemote();
-
     @Key("remoteUrl")
+    @DefaultValue("")
     String remoteUrl();
 
     @Key("pageLoadStrategy")
