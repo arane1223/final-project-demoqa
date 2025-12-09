@@ -1,19 +1,19 @@
-# Проект по автоматизации UI и API тестирования на demoqa.com
+# Проект по автоматизации UI и API тестирования на [demoqa.com](https://demoqa.com/)
 <a href="https://demoqa.com/"><img width="50%" title="DEMOQA" src="images/icons/Toolsqa.jpg"></a>
 
-## :point_up: Структура:
+## Структура:
 
-- <a href="#point_up_2-технологии-и-инструменты">Стек</a>
-- <a href="#point_up_2-проведенные автотесты">Проведенные автотесты</a>
-- <a href="#point_up_2-сборка-в-Jenkins">Сборка в Jenkins</a>
-- <a href="#point_up_2-запуск-из-терминала">Запуск из терминала</a>
-- <a href="#point_up_2-allure-отчет">Allure отчет</a>
-- <a href="#point_up_2-интеграция-с-allure-testops">Интеграция с Allure TestOps</a>
-- <a href="#point_up_2-интеграция-с-jira">Интеграция с Jira</a>
-- <a href="#point_up_2-отчет-в-telegram">Отчет в Telegram</a>
-- <a href="#point_up_2-видео-примеры-прохождения-тестов">Видео примеры прохождения тестов</a>
+- <a href="#-технологии-и-инструменты">Стек</a>
+- <a href="#-проведенные автотесты">Проведенные автотесты</a>
+- <a href="#-сборка-в-Jenkins">Сборка в Jenkins</a>
+- <a href="#-запуск-из-терминала">Запуск из терминала</a>
+- <a href="#-allure-отчет">Allure отчет</a>
+- <a href="#-интеграция-с-allure-testops">Интеграция с Allure TestOps</a>
+- <a href="#-интеграция-с-jira">Интеграция с Jira</a>
+- <a href="#-отчет-в-telegram">Отчет в Telegram</a>
+- <a href="#-видео-примеры-прохождения-тестов">Видео примеры прохождения тестов</a>
 
-## :point_up_2: Стек
+## 🛠️ Стек
 
 <p align="center">
 <img src="images/icons/Java.svg" width="50" />
@@ -32,7 +32,7 @@
 <img src="images/icons/Jira.svg" width="50" />
 </p>
 
-## :point_up_2: Проведенные автотесты
+## ✅ Проведенные автотесты
 
 ### UI тесты:
 
@@ -62,7 +62,7 @@
 - Успешное удаление товара из списка через API запрос
 - Успешное удаление товара из списка через UI взаимодействие
 
-## :point_up_2: Сборка в Jenkins
+## 📋 Сборка в Jenkins
 [**Сборка в Jenkins**](https://jenkins.autotests.cloud/job/final-project-demoqa/)
 <p>
 <img title="Jenkins Dashboard" src="images/screenshots/jenkins-project.png">
@@ -78,7 +78,7 @@
 - browserVersion (версия браузера, по умолчанию 127)
 - browserSize (размер окна браузера, по умолчанию 1920x1080)
 
-## :point_up_2: Запуск из терминала
+## ▶️ Запуск из терминала
 Локальный запуск:
 ```
 gradle clean test -Denv=local
@@ -94,7 +94,7 @@ ${TASK}_test
 -DbrowserSize=${BROWSER_SIZE}
 ```
 
-## :point_up_2: Allure отчет
+## 📑 Allure отчет
 
 [Allure отчет в Jenkins](https://jenkins.autotests.cloud/job/final-project-demoqa/allure/)
 
@@ -108,7 +108,7 @@ ${TASK}_test
 <img title="Allure report suites" src="images/screenshots/allure-report-suites.png">
 </p>
 
-## :point_up_2: Интеграция с Allure TestOps
+## 📑 Интеграция с Allure TestOps
 
 [Проект в Allure TestOps](https://allure.autotests.cloud/project/5009/dashboards)
 
@@ -122,7 +122,7 @@ ${TASK}_test
 <img title="Allure test cases" src="images/screenshots/allure-test-ops-tests.png">
 </p>
 
-## :point_up_2: Интеграция с Jira
+## 📑 Интеграция с Jira
 
 [Задача в Jira](https://jira.autotests.cloud/browse/HOMEWORK-1539)
 
@@ -133,12 +133,12 @@ ${TASK}_test
 <img title="Jira test launches" src="images/screenshots/jira-allure-launches.png">
 </p>
 
-## :point_up_2: Отчет в Telegram
+## 💬 Отчет в Telegram
 <p>
 <img title="Telegram" src="images/screenshots/Telegram.png">
 </p>
 
-## :point_up_2: Видео примеры прохождения тестов
+## 🎦 Видео примеры прохождения тестов
 > К каждому тесту в отчете прилагается видео. Пара таких видео представлено ниже.
 <p>
   <img title="Selenoid Video" src="images/gif/selenoid1.gif">
