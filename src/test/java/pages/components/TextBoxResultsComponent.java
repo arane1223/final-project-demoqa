@@ -17,7 +17,7 @@ public class TextBoxResultsComponent {
 
     @Step("Проверить результат после заполнения формы")
     public TextBoxResultsComponent checkResults(String name, String email,
-                                            String currentAddress, String permanentAddress) {
+                                                String currentAddress, String permanentAddress) {
         nameCheck.shouldHave(text(name));
         emailCheck.shouldHave(text(email));
         currentAddressCheck.shouldHave(text(currentAddress));
@@ -27,7 +27,7 @@ public class TextBoxResultsComponent {
 
     @Step("Проверить результат после заполнения формы")
     public TextBoxResultsComponent checkResults(String name, String email,
-                                            List<String> address) {
+                                                List<String> address) {
         nameCheck.shouldHave(text(name));
         emailCheck.shouldHave(text(email));
         currentAddressCheck.shouldHave(text(address.get(0)));

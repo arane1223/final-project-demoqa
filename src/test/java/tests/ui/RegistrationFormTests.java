@@ -28,8 +28,7 @@ public class RegistrationFormTests extends TestBase {
                 registrationPage.openPage().deleteAdds());
 
         step("Заполнить все поля формы случайными значениями и жмем на кнопу Submit", () ->
-                registrationPage
-                        .setFirstName(data.firstName)
+                registrationPage.setFirstName(data.firstName)
                         .setLastName(data.lastName)
                         .setEmail(data.userEmail)
                         .setGender(data.gender)
@@ -44,8 +43,7 @@ public class RegistrationFormTests extends TestBase {
                         .clickOnSubmit());
 
         step("Проверить, что появился popup с введенными значениями во всех полях", () ->
-                registrationResults
-                        .checkFormVisible("Thanks for submitting the form")
+                registrationResults.checkFormVisible("Thanks for submitting the form")
                         .checkFormResults("Student Name", data.firstName + " " + data.lastName)
                         .checkFormResults("Student Email", data.userEmail)
                         .checkFormResults("Gender", data.gender)
@@ -69,8 +67,7 @@ public class RegistrationFormTests extends TestBase {
                 registrationPage.openPage().deleteAdds());
 
         step("Заполнить обязательные поля и жмем на кнопу Submit", () ->
-                registrationPage
-                        .setFirstName(data.firstName)
+                registrationPage.setFirstName(data.firstName)
                         .setLastName(data.lastName)
                         .setGender(data.gender)
                         .setUserNumber(data.userNumber)
@@ -78,8 +75,7 @@ public class RegistrationFormTests extends TestBase {
                         .clickOnSubmit());
 
         step("Проверить, что появился popup с введенными значениями во всех полях", () ->
-                registrationResults
-                        .checkFormVisible("Thanks for submitting the form")
+                registrationResults.checkFormVisible("Thanks for submitting the form")
                         .checkFormResults("Student Name", data.firstName + " " + data.lastName)
                         .checkFormResults("Gender", data.gender)
                         .checkFormResults("Mobile", data.userNumber));
@@ -90,13 +86,11 @@ public class RegistrationFormTests extends TestBase {
     @Story("Отправка пустой формы")
     @DisplayName("При нажатии на кнопку Submit с пустыми полями, popup не появится")
     void negativeFillFormTest() {
-        registrationPage
-                .openPage()
+        registrationPage.openPage()
                 .deleteAdds()
                 .clickOnSubmit();
 
-        registrationResults
-                .checkFormInvisible();
+        registrationResults.checkFormInvisible();
 
     }
 }

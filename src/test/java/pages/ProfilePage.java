@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class ProfilePage {
-     private SelenideElement
+    private SelenideElement
             userName = $("#userName-value"),
             bookTable = $(".rt-tbody"),
             deleteBook = $("#delete-record-undefined"),

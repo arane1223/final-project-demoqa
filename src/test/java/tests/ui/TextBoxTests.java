@@ -34,8 +34,7 @@ public class TextBoxTests extends TestBase {
                 textBox.openPage().deleteAdds());
 
         step("Заполнить форму и жмем на кнопку Submit", () ->
-                textBox
-                        .setUserName(data.firstName)
+                textBox.setUserName(data.firstName)
                         .setUserEmail(data.userEmail)
                         .setAllAddresses(data.address, data.secondAddress)
                         .scrollToSubmit()
@@ -69,8 +68,7 @@ public class TextBoxTests extends TestBase {
                 textBox.openPage().deleteAdds());
 
         step("Ввести данные с именем, почтой, адресами, и жмем на Submit", () ->
-                textBox
-                        .setUserName(userName)
+                textBox.setUserName(userName)
                         .setUserEmail(userEmail)
                         .setAllAddresses(addresses)
                         .scrollToSubmit()

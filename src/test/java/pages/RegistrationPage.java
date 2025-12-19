@@ -33,44 +33,44 @@ public class RegistrationPage {
     }
 
     @Step("Удалить рекламу со страницы")
-    public RegistrationPage deleteAdds(){
+    public RegistrationPage deleteAdds() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
 
     @Step("Ввести имя")
-    public RegistrationPage setFirstName(String value){
+    public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
         return this;
     }
 
     @Step("Ввести фамилию")
-    public RegistrationPage setLastName(String value){
+    public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
         return this;
     }
 
     @Step("Ввести e-mail")
-    public RegistrationPage setEmail(String email){
+    public RegistrationPage setEmail(String email) {
         userEmailInput.setValue(email);
         return this;
     }
 
     @Step("Выбрать пол")
-    public RegistrationPage setGender(String gender){
+    public RegistrationPage setGender(String gender) {
         genderWrapper.$(byText(gender)).click();
         return this;
     }
 
     @Step("Ввести номер телефона")
-    public RegistrationPage setUserNumber(String number){
+    public RegistrationPage setUserNumber(String number) {
         userNumberInput.setValue(number);
         return this;
     }
 
     @Step("Заполнить дату рождения")
-    public RegistrationPage setDayOfBirthday(String day, String month, String year){
+    public RegistrationPage setDayOfBirthday(String day, String month, String year) {
         celendarInput.click();
         CalendarComponent celendarComponent = new CalendarComponent();
         celendarComponent.setDate(day, month, year);
@@ -102,19 +102,19 @@ public class RegistrationPage {
     }
 
     @Step("Загрузить картинку")
-    public RegistrationPage setPicture(String fileName){
+    public RegistrationPage setPicture(String fileName) {
         uploadPicture.uploadFromClasspath(fileName);
         return this;
     }
 
     @Step("Ввести адрес")
-    public RegistrationPage setAddress(String address){
+    public RegistrationPage setAddress(String address) {
         adressInput.setValue(address);
         return this;
     }
 
     @Step("Выбрать штат и город")
-    public RegistrationPage setStateAndCity (String state, String city){
+    public RegistrationPage setStateAndCity(String state, String city) {
 
         stateInput.setValue(state).pressEnter();
         cityInput.setValue(city).pressEnter();
@@ -122,7 +122,7 @@ public class RegistrationPage {
     }
 
     @Step("Кликнуть на кнопку «Submit»")
-    public RegistrationPage clickOnSubmit(){
+    public RegistrationPage clickOnSubmit() {
         submitInput.click();
         return this;
     }

@@ -40,8 +40,7 @@ public class DeleteBookTests extends TestBase {
                 executeDelete("/BookStore/v1/Book", token,
                         new StringObjectModel(GIT_BOOK_ISBN, userId), 204));
 
-        profilePage
-                .openProfilePage()
+        profilePage.openProfilePage()
                 .checkingProfileAfterDelete(AUTH_DATA.getUserName());
     }
 
@@ -59,8 +58,7 @@ public class DeleteBookTests extends TestBase {
                 executePost("/BookStore/v1/Books", token,
                         new AddListOfBooksModel(userId, BOOK_LIST), 201));
 
-        profilePage
-                .openProfilePage()
+        profilePage.openProfilePage()
                 .checkingProfileBeforeDelete(AUTH_DATA.getUserName(), GIT_BOOK_TITLE)
                 .deleteBooksInProfile()
                 .checkingProfileAfterDelete(AUTH_DATA.getUserName());
